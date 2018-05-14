@@ -1,0 +1,21 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "GenericParserLibrary", "GenericParserLibrary\GenericParserLibrary.fsproj", "{4AD87986-0790-4880-96EB-38CCDD93BBD5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Paket", "Paket", "{4E25312D-12AE-4E82-8BF6-029E7830330A}"
+ProjectSection(SolutionItems) = preProject
+	paket.dependencies = paket.dependencies
+EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4AD87986-0790-4880-96EB-38CCDD93BBD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AD87986-0790-4880-96EB-38CCDD93BBD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AD87986-0790-4880-96EB-38CCDD93BBD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AD87986-0790-4880-96EB-38CCDD93BBD5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
