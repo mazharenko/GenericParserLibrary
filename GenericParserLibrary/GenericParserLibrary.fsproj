@@ -6,5 +6,8 @@
   <ItemGroup>
     <Content Include="paket.references" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ParserLibrary.fs" />
+  </ItemGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>
