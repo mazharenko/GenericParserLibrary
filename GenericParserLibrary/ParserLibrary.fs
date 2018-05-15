@@ -25,6 +25,11 @@ type ParserError = string
 type Result<'a> = 
     | Success of 'a
     | Failure of ParserLabel * ParserError * IParserPosition
+    
+let (|Succeded|Failed|) result : Choice<'a, ParserLabel * ParserError * IParserPosition> = 
+    match result with 
+    | Success (res) -> Succeded res
+    | Failure (label, error, position) -> Failed (label, error, position)
 
 /// A Parser structure has a parsing function & label
 type Parser<'a> = 
@@ -80,15 +85,15 @@ let condition parser predicate =
     let innerFn input = 
         let result = parser.parseFn input
         match result with
-        | Success(token, state) -> 
+        | Succeded (token, state) -> 
             if predicate token then Success(token, state)
             else 
                 let err = sprintf "Unexpected '%O'" token
                 let pos = input.Position
                 Failure(label, err, pos)
-        | Failure(label, err, pos) -> 
+        | Failed fail -> 
             // if Failure, do nothing
-            Failure(label, err, pos)
+            Failure fail
     { parseFn = innerFn
       label = label }
 
@@ -107,10 +112,10 @@ let bindP f p =
     let innerFn input = 
         let result1 = runOnInput p input
         match result1 with
-        | Failure(label, err, pos) -> 
+        | Failed fail -> 
             // return error from parser1
-            Failure(label, err, pos)
-        | Success(value1, remainingInput) -> 
+            Failure fail
+        | Succeded (value1, remainingInput) -> 
             // apply f to get a new parser
             let p2 = f value1
             // run parser with remaining input
@@ -204,10 +209,10 @@ let all (listOfParsers : Parser<'a> list) =
         let enriched = parsers |> List.map enrich
         let result1 = runOnInput (choice enriched) input
         match result1 with
-        | Failure(label, err, pos) -> 
+        | Failed failure -> 
             // return error from parser choice
-            Failure(label, err, pos)
-        | Success((parserSucceeded, value), remainingInput) -> 
+            Failure failure
+        | Succeded ((parserSucceeded, value), remainingInput) -> 
             // filter original parsers list
             let newParsers = 
                 parsers |> List.filter (fun p -> not (LanguagePrimitives.PhysicalEquality p parserSucceeded))
@@ -227,10 +232,10 @@ let rec parseZeroOrMore parser input =
     let firstResult = runOnInput parser input
     // test the result for Failure/Success
     match firstResult with
-    | Failure(_, _, _) -> ([], 
+    | Failed _ -> ([], 
                            // if parse fails, return empty list
                            input)
-    | Success(firstValue, inputAfterFirstParse) -> 
+    | Succeded (firstValue, inputAfterFirstParse) -> 
         // if parse succeeds, call recursively
         // to get the subsequent values
         let (subsequentValues, remainingInput) = parseZeroOrMore parser inputAfterFirstParse
