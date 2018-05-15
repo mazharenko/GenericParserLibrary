@@ -7,6 +7,10 @@ ProjectSection(SolutionItems) = preProject
 	paket.dependencies = paket.dependencies
 EndProjectSection
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "GenericParserLibrary.Text", "GenericParserLibrary.Text\GenericParserLibrary.Text.fsproj", "{A23DDC82-F630-4E15-9B1B-02161619B59F}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ParserLibrary.Bin", "ParserLibrary.Bin\ParserLibrary.Bin.fsproj", "{48D31CA9-CF4D-4EBA-811A-1E160CE40F9A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,5 +21,13 @@ Global
 		{4AD87986-0790-4880-96EB-38CCDD93BBD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4AD87986-0790-4880-96EB-38CCDD93BBD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4AD87986-0790-4880-96EB-38CCDD93BBD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A23DDC82-F630-4E15-9B1B-02161619B59F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A23DDC82-F630-4E15-9B1B-02161619B59F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A23DDC82-F630-4E15-9B1B-02161619B59F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A23DDC82-F630-4E15-9B1B-02161619B59F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48D31CA9-CF4D-4EBA-811A-1E160CE40F9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48D31CA9-CF4D-4EBA-811A-1E160CE40F9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48D31CA9-CF4D-4EBA-811A-1E160CE40F9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48D31CA9-CF4D-4EBA-811A-1E160CE40F9A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
