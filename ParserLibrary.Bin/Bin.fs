@@ -36,6 +36,9 @@ module Bin =
         match token with
         | :? ByteToken as byteToken -> byteToken.Value
         | _ -> invalidArg "token" "only ByteToken is supported"
+        
+    let readByte =
+        read |>> UnpackByte
     
     // TODO: make it possible to read from stream
     type ByteInputState(bytes : byte [], position : ByteParserPosition) = 
@@ -61,6 +64,6 @@ module Bin =
             // label is just the character
             let label = sprintf "%o" byteToMatch
             let predicate ch = (ch = byteToMatch)
-            read <?> (UnpackByte >> predicate) <//> label
+            readByte <?> predicate <//> label
     
     let run parser bytes = ByteInputState bytes |> runOnInput parser
