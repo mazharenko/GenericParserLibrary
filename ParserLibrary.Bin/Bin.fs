@@ -13,7 +13,7 @@ module Bin =
     
     type ByteParserPosition = 
         struct
-            val mutable private position : int option
+            val private position : int option
             private new(position) = { position = position }
             interface IParserPosition
             member __.ByteNumber = __.position
